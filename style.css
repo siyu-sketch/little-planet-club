@@ -1,0 +1,167 @@
+/* 1. Shared colours, fonts and spacing. Change these for a live demonstration. */
+:root {
+    --paper: #f2f6f1;
+    --ink: #253b55;
+    --green: #386f67;
+    --sky: #dce9f1;
+    --sage: #dfece3;
+    --gold: #e8cc8b;
+    --line: #c9d8d8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 'Segoe UI', Arial, sans-serif; }
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+button, a, summary, input, select, textarea { outline-offset: 4px; }
+h1, h2, h3, p, figure { margin: 0; }
+h1, h2, h3, .brand { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; line-height: 1.06; letter-spacing: -.04em; }
+h2 { font-size: clamp(38px, 4.6vw, 65px); }
+h2 span { color: var(--green); }
+.wrap { width: min(1180px, 88%); margin: 0 auto; }
+.kicker { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 1.4px; font-weight: bold; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; flex-shrink: 0; }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; background: var(--gold); color: #253b55; text-decoration: none; border: 0; border-radius: 30px; padding: 13px 21px; font-weight: bold; font-size: 14px; }
+.button:hover { background: #f4daa4; }
+/* 2. Header and native quick-link finder */
+.site-header { background: var(--paper); position: relative; z-index: 3; }
+.header-inner { width: min(1360px, 94%); min-height: 78px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; white-space: nowrap; font-size: 25px; }
+.brand-small { display: block; font-size: 8px; font-weight: bold; letter-spacing: 1.6px; margin-top: 6px; }
+nav, .header-tools { display: flex; align-items: center; gap: 21px; }
+nav a { text-decoration: none; font-weight: bold; font-size: 13px; padding: 10px 0; }
+nav a:hover, .activity-body a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.header-tools { gap: 10px; }
+.finder { position: relative; }
+.finder summary { list-style: none; cursor: pointer; padding: 8px 12px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 25px; font-size: 12px; white-space: nowrap; }
+.finder summary::-webkit-details-marker { display: none; }
+.search-icon { width: 13px; height: 13px; border: 1.5px solid currentColor; border-radius: 50%; position: relative; margin-right: 3px; }
+.search-icon::after { content: ''; position: absolute; width: 6px; height: 1.5px; background: currentColor; right: -5px; bottom: -2px; transform: rotate(45deg); }
+.finder-links { position: absolute; right: 0; top: 43px; width: 218px; padding: 15px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 22px #254e5320; }
+.finder-links strong { font-size: 10px; letter-spacing: 1px; padding: 8px; }
+.finder-links a { display: block; text-decoration: none; padding: 7px 8px; font-size: 13px; }
+.finder-links a:hover { background: var(--sage); border-radius: 5px; }
+.join { background: var(--green); color: white; border-radius: 24px; padding: 10px 15px; text-decoration: none; font-weight: bold; font-size: 12px; white-space: nowrap; }
+/* 3. Home: a single atmospheric background creates depth without scripts. */
+.hero { color: #f7f8f1; background: #253b55 url('images/background 1.jpg') center bottom / cover no-repeat; }
+.hero-inner { min-height: 710px; position: relative; padding: 62px 0 132px; text-align: center; }
+.hero-eyebrow { font-size: 12px; font-weight: bold; letter-spacing: 2.2px; color: #d2e7e6; }
+.hero h1 { font-size: clamp(64px, 8.8vw, 126px); margin: 13px 0 9px; line-height: .98; font-weight: 700; letter-spacing: -.045em; }
+.hero h1 span { color: #c5e4d5; }
+.hero-subtitle { font-size: 19px; color: #ffffff; font-weight: 600; display: inline-block; padding: 0 12px; background: radial-gradient(ellipse, #1b3048c9 25%, #1b304880 57%, transparent 80%); text-shadow: 0 1px 4px #15243b, 0 0 8px #15243b; }
+.hero-bottom { display: flex; justify-content: space-between; align-items: end; text-align: left; margin-top: 126px; gap: 30px; }
+.hero-side { width: 240px; }
+.hero-index, .hero-coordinate span:first-child { display: block; font-size: 10px; letter-spacing: 1.4px; font-weight: bold; color: #d2e7e6; }
+.hero-side p { font-size: 16px; line-height: 1.55; margin: 12px 0 19px; }
+.hero-coordinate { text-align: right; font-size: 14px; }
+.hero-coordinate span { display: block; margin-bottom: 6px; }
+.hero-coordinate a { display: inline-block; margin-top: 9px; font-size: 12px; color: #f7f8f1; text-underline-offset: 5px; }
+/* 4. About: overlap adds depth, and the floating panel connects home and content. */
+.intro { position: relative; margin-top: -52px; background: #fafbf7; border: 1px solid #e5e5d7; border-radius: 18px; box-shadow: 0 18px 38px #253b5512; padding: 40px 48px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 65px; align-items: center; }
+.intro h2 { font-size: clamp(34px, 3.8vw, 52px); margin: 15px 0; }
+.intro-main > p:last-child { max-width: 550px; }
+.intro-values { display: grid; gap: 13px; }
+.intro-values > div { display: flex; align-items: center; gap: 13px; border-bottom: 1px solid #dce4da; padding-bottom: 10px; }
+.intro-values > div:last-child { border: 0; padding-bottom: 0; }
+.intro-values img { background: var(--sage); border-radius: 50%; padding: 4px; flex-shrink: 0; }
+.intro-values strong, .intro-values small { display: block; }
+.intro-values strong { font-size: 17px; }
+.intro-values small { font-size: 13px; color: #4c6665; }
+/* 5. Activities: three equally important offerings with a gentle stagger. */
+.activities { padding: 88px 0 55px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 36px; }
+.section-heading h2 { margin-top: 16px; }
+.section-heading > p { max-width: 335px; }
+.activity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 23px; align-items: start; }
+.activity { background: #fafbf7; border: 1px solid #dbe4d9; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px #315b4a0b; }
+.activity.middle { margin-top: 30px; }
+.activity-image { position: relative; padding: 10px 10px 0; }
+.activity-image img { width: 100%; height: 245px; object-fit: cover; border-radius: 5px 5px 45% 5px / 5px 5px 22% 5px; }
+.tag { position: absolute; left: 20px; top: 20px; padding: 5px 10px; border-radius: 20px; background: #fffdf2; color: var(--ink); font-size: 10px; font-weight: bold; letter-spacing: .6px; }
+.activity-body { padding: 21px 22px 24px; }
+.activity-title { display: flex; align-items: center; gap: 9px; }
+.activity-title h3 { font-size: 25px; }
+.activity-title img { flex-shrink: 0; }
+.activity-body p { margin: 10px 0 18px; font-size: 14px; min-height: 92px; }
+.activity-body a { font-size: 13px; font-weight: bold; text-decoration: none; display: flex; justify-content: space-between; border-top: 1px solid #dce4da; padding-top: 12px; }
+.trail-note { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; font-size: 12px; color: #46695f; margin-top: 30px; }
+.trail-note span:first-child, .trail-note span:last-child { color: var(--green); font-size: 8px; }
+/* 6. Film: a rounded landscape-like background, a framed video and accessible controls. */
+.film { background: var(--sky); border-radius: 48% 48% 0 0 / 40px 40px 0 0; padding: 76px 0 65px; }
+.film-inner { display: grid; grid-template-columns: .8fr 1.2fr; gap: 58px; align-items: center; }
+.film-copy h2 { margin: 18px 0; }
+.film-copy p:not(.kicker) { max-width: 380px; margin-bottom: 17px; }
+.film-copy a { font-size: 13px; font-weight: bold; text-underline-offset: 3px; }
+.film-frame { padding: 13px; border-radius: 22px; background: #fafbf7; box-shadow: 0 14px 30px #315b4a19; }
+.film-frame video { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; }
+.film-frame figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 11px 5px 0; font-size: 10px; letter-spacing: .7px; }
+/* 7. Contact: postal design using a real labelled form, no data submission. */
+.contact { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; padding: 78px 0; }
+.contact-copy h2 { margin: 18px 0; }
+.contact-copy p:not(.kicker) { max-width: 340px; }
+.postmark { display: flex; align-items: center; gap: 15px; margin-top: 24px; color: var(--green); font-size: 11px; font-weight: bold; letter-spacing: 1.4px; }
+.postmark img { width: 76px; height: 76px; }
+.contact-form { border: 1px solid #c6d7c8; background: #fafbf7; border-radius: 22px; padding: 26px 28px; box-shadow: 0 10px 25px #315b4a10; }
+.form-heading { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 17px; font-weight: bold; font-size: 12px; letter-spacing: 1.1px; }
+.stamp { border: 2px dotted var(--green); padding: 7px; font-size: 9px; color: var(--green); text-align: center; line-height: 1.1; transform: rotate(5deg); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { min-width: 0; margin-bottom: 12px; }
+.field label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 4px; }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; background: var(--paper); color: var(--ink); border: 1px solid #bdcfc4; border-radius: 8px; padding: 9px 11px; font-size: 14px; }
+.field textarea { resize: vertical; }
+.contact-form button:disabled { cursor: not-allowed; opacity: .85; }
+.form-note { font-size: 11px; margin-top: 8px; color: #506662; }
+.footer { background: #dfeae4; border-top: 1px solid #c7d8c7; padding: 30px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.footer-inner p, .back-top { font-size: 12px; }
+/* 8. Responsive rules: adapt the same layout for tablet and mobile. */
+@media (max-width: 1060px) {
+    .header-inner { flex-wrap: wrap; padding: 10px 0; gap: 7px 15px; }
+    nav { order: 3; width: 100%; justify-content: center; border-top: 1px solid var(--line); }
+    .hero-inner { min-height: 665px; }
+    .hero-side { width: 200px; }
+    .activity-image img { height: 190px; }
+    .activity-body { padding: 17px; }
+    .activity-title h3 { font-size: 22px; }
+    .intro { gap: 30px; padding: 33px; }
+    .film-inner, .contact { gap: 35px; }
+}
+@media (max-width: 720px) {
+    .wrap { width: 90%; }
+    .header-inner { width: 92%; }
+    .brand { font-size: 20px; }
+    .brand img { width: 32px; height: 32px; }
+    .brand-small { font-size: 7px; letter-spacing: 1px; }
+    .join { display: none; }
+    nav { justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    nav a { font-size: 12px; }
+    .finder summary { padding: 7px 9px; font-size: 11px; }
+    .hero { background-size: auto 610px; background-position: center top; background-color: #f2f6f1; }
+    .hero-inner { min-height: 610px; padding: 32px 0 30px; }
+    .hero h1 { font-size: clamp(48px, 10.5vw, 72px); margin: 14px 0 10px; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: 1.1px; }
+    .hero-subtitle { font-size: 15px; }
+    .hero-bottom { justify-content: center; margin-top: 19px; text-align: center; }
+    .hero-side { width: 100%; }
+    .hero-side p { font-size: 14px; max-width: 300px; margin: 0 auto 14px; }
+    .hero-index, .hero-coordinate { display: none; }
+    .intro { margin-top: -35px; grid-template-columns: 1fr; padding: 25px; gap: 22px; border-radius: 20px; }
+    .activities { padding: 57px 0 40px; }
+    .section-heading { display: block; margin-bottom: 22px; }
+    .section-heading > p { margin-top: 15px; }
+    .activity-grid { grid-template-columns: 1fr; gap: 18px; }
+    .activity.middle { margin-top: 0; }
+    .activity-image img { height: 225px; }
+    .activity-body { padding: 20px; }
+    .activity-body p { min-height: 0; }
+    .film { padding: 52px 0 40px; border-radius: 50% 50% 0 0 / 20px 20px 0 0; }
+    .film-inner, .contact { grid-template-columns: 1fr; gap: 25px; }
+    .film-frame { padding: 8px; border-radius: 14px; }
+    .film-frame figcaption { font-size: 9px; }
+    .contact { padding: 50px 0; }
+    .contact-form { padding: 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .footer-inner { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
